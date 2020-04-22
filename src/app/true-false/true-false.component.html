@@ -1,0 +1,49 @@
+<h3>Question Title: {{question.title}}</h3>
+<h5>Question: {{question.question}}</h5>
+
+<label [class]="{
+  'correct': grading && question.correct==='true',
+  'false': grading && question.answer ==='true' && question.correct ==='false'
+}">
+  <input type="radio"
+         value="true"
+         [(ngModel)]="question.answer"
+         name="{{question._id}}"
+
+  />
+  True
+  <i [hidden]="!grading || question.correct==='false'"  class="fa fa-check-circle"></i>
+  <i [hidden]="!grading || question.answer==='false' || question.correct==='true'" class="fa fa-times-circle"></i>
+</label>
+
+<br/>
+<label [class]="{
+  'correct': grading && question.correct==='false',
+  'false' :grading && question.answer==='false' && question.correct==='true'
+}">
+  <input type="radio"
+         value="false"
+         [(ngModel)]="question.answer"
+         name="{{question._id}}"/>
+  False
+  <i class="fa fa-check-circle" [hidden]="!grading || question.correct!=='false'"></i>
+  <i class="fa fa-times-circle" [hidden]="!grading || question.answer==='true' || question.correct==='false'"></i>
+</label>
+
+<br/>
+<button class="btn-success" (click)="graded()">
+  Grade
+</button>
+
+<br/>
+Your answer: {{question.answer}}
+
+<br/>
+<span [hidden]="!grading">
+  Correct answer: {{question.correct}}
+</span>
+
+<br/>
+<span [hidden]="!grading || question.answer !== question.correct">Correct!</span>
+<span [hidden]="!grading || question.answer === question.correct">Wrong!</span>
+
