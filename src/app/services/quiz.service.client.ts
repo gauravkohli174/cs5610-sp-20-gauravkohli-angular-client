@@ -9,7 +9,7 @@ export class QuizServiceClient {
     fetch(`https://cs5610-gk-a9-server.herokuapp.com/api/quizzes/${qid}`)
       .then(response => response.json())
 
-  submitQuiz = (quizId, questions) => fetch(`https://sleepy-bayou-71044.herokuapp.com/api/quizzes/${quizId}/attempts`, {
+  submitQuiz = (quizId, questions) => fetch(`https://cs5610-gk-a9-server.herokuapp.com/api/quizzes/${quizId}/attempts`, {
     method: 'POST',
     body: JSON.stringify(questions),
     headers: {
