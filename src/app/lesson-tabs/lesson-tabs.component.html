@@ -1,0 +1,12 @@
+<h4>Lesson Tabs</h4>
+
+<ul class="nav-pills">
+  <li class="list-group-item"
+      *ngFor="let lesson of lessons"
+      [class]="{'active': lessonId === lesson._id}">
+    <a routerLink="/courses/{{courseId}}/modules/{{moduleId}}/lessons/{{lesson._id}}">
+      {{lesson.title}}
+    </a>
+  </li>
+</ul>
+
